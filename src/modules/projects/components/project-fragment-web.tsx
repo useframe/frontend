@@ -22,11 +22,17 @@ const ProjectFragmentWeb = ({ data }: ProjectFragmentWebProps) => {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(data?.sandboxUrl);
-    setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
+    navigator.clipboard
+      .writeText(data?.sandboxUrl)
+      .then(() => {
+        setIsCopied(true);
+        setTimeout(() => {
+          setIsCopied(false);
+        }, 2000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy to clipboard: ", err);
+      });
   };
 
   const handleExternalLink = () => {
