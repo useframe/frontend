@@ -36,7 +36,11 @@ const TreeView = ({ data, value, onSelect }: TreeViewProps) => {
               <SidebarMenu>
                 {data.map((item, index) => (
                   <Tree
-                    key={Array.isArray(item) ? `folder-${index}-${item[0]}` : `file-${index}-${item}`}
+                    key={
+                      Array.isArray(item)
+                        ? `folder-${index}-${item[0]}`
+                        : `file-${index}-${item}`
+                    }
                     item={item}
                     parentPath=""
                     selectedValue={value}
