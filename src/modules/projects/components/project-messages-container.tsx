@@ -21,6 +21,7 @@ const ProjectMessagesContainer = ({
 }: ProjectMessagesContainerProps) => {
   const trpc = useTRPC();
   const bottomRef = useRef<HTMLDivElement>(null);
+  const lastAssistantMessageIdRef = useRef<string | null>(null);
 
   const { data: messages } = useSuspenseQuery(
     trpc.messages.getMessages.queryOptions(
@@ -36,7 +37,12 @@ const ProjectMessagesContainer = ({
       (message) => message.role === "ASSISTANT"
     );
 
-    if (lastAssistantMessage && lastAssistantMessage.fragment) {
+    if (
+      lastAssistantMessage &&
+      lastAssistantMessage.fragment &&
+      lastAssistantMessage.id !== lastAssistantMessageIdRef.current
+    ) {
+      lastAssistantMessageIdRef.current = lastAssistantMessage.id;
       setActiveFragment(lastAssistantMessage.fragment);
     }
   }, [messages, setActiveFragment]);
