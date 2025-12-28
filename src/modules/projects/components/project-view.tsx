@@ -7,11 +7,17 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 
 import ProjectMessagesContainer from "./project-messages-container";
 import { Fragment } from "@/generated/prisma/client";
 import ProjectHeader from "./project-header";
 import ProjectFragmentWeb from "./project-fragment-web";
+import { CodeIcon, CrownIcon, EyeIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { FileExplorer } from "@/components/file-explorer";
+import { FileCollection } from "@/types/file";
 
 interface ProjectViewProps {
   projectId: string;
@@ -19,10 +25,11 @@ interface ProjectViewProps {
 
 const ProjectView = ({ projectId }: ProjectViewProps) => {
   const [activeFragment, setActiveFragment] = useState<Fragment | null>(null);
+  const [tabState, setTabState] = useState<"preview" | "code">("preview");
 
   return (
     <div className="h-screen">
-      <ResizablePanelGroup orientation="horizontal">
+      <ResizablePanelGroup direction="horizontal">
         <ResizablePanel
           defaultSize={35}
           minSize={20}
@@ -39,9 +46,43 @@ const ProjectView = ({ projectId }: ProjectViewProps) => {
             />
           </Suspense>
         </ResizablePanel>
-        <ResizableHandle withHandle />
+        <ResizableHandle className="hover:bg-primary transition-colors" />
         <ResizablePanel defaultSize={65} minSize={50}>
-          {!!activeFragment && <ProjectFragmentWeb data={activeFragment} />}
+          <Tabs
+            defaultValue="preview"
+            className="h-full gap-y-0"
+            value={tabState}
+            onValueChange={(value) => setTabState(value as "preview" | "code")}
+          >
+            <div className="w-full flex items-center p-2 border-b gap-x-2">
+              <TabsList className="h-8 p-0 border rounded-md">
+                <TabsTrigger value="preview" className="rounded-md">
+                  <EyeIcon /> Demo
+                </TabsTrigger>
+                <TabsTrigger value="code" className="rounded-md">
+                  <CodeIcon /> Code
+                </TabsTrigger>
+              </TabsList>
+              <div className="ml-auto flex items-center gap-x-2">
+                <Button asChild size="sm">
+                  <Link href="/pricing">
+                    <CrownIcon /> Upgrade
+                  </Link>
+                </Button>
+              </div>
+            </div>
+            <TabsContent value="preview">
+              {!!activeFragment && <ProjectFragmentWeb data={activeFragment} />}
+            </TabsContent>
+            <TabsContent value="code" className="min-h-0">
+              {/* {!!activeFragment && (
+                <ProjectFragmentCode data={activeFragment} />
+              )} */}
+              {!!activeFragment?.files && (
+                <FileExplorer files={activeFragment.files as FileCollection} />
+              )}
+            </TabsContent>
+          </Tabs>
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>

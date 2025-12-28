@@ -42,11 +42,11 @@ const ProjectFragmentWeb = ({ data }: ProjectFragmentWebProps) => {
 
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="flex items-center gap-x-2 bg-muted border-b p-2₹">
+      <div className="flex items-center gap-x-2 bg-muted border-b p-2">
         <Tooltip>
           <TooltipTrigger asChild>
             <Button size="sm" variant="outline" onClick={handleRefresh}>
-              <RefreshCcwIcon className="w-4 h-4" />
+              <RefreshCcwIcon />
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom">
@@ -61,10 +61,9 @@ const ProjectFragmentWeb = ({ data }: ProjectFragmentWebProps) => {
               variant="outline"
               onClick={handleCopy}
               disabled={!data?.sandboxUrl || isCopied}
-              className="flex-1 justify-start text-start font-normal"
+              className="flex-1 justify-start text-start font-normal truncate"
             >
-              <RefreshCcwIcon className="w-4 h-4" />
-              <span className="truncate">{data?.sandboxUrl}</span>
+              {data?.sandboxUrl}
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom">
