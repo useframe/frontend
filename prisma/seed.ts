@@ -19,7 +19,6 @@ const projectData: Prisma.ProjectCreateInput[] = [
   {
     name: "Sample Project",
     description: "A sample project for testing",
-    userId: "user_123",
     messages: {
       create: [
         {
@@ -37,39 +36,34 @@ const projectData: Prisma.ProjectCreateInput[] = [
   },
 ];
 
-export async function main() {
-  console.log("🌱 Starting seed...");
+console.log("🌱 Starting seed...");
 
-  try {
-    for (const project of projectData) {
-      // Check if project already exists by name and userId
-      const existingProject = await prisma.project.findFirst({
-        where: {
-          name: project.name,
-          userId: project.userId,
-        },
-      });
+try {
+  for (const project of projectData) {
+    // Check if project already exists by name
+    const existingProject = await prisma.project.findFirst({
+      where: {
+        name: project.name,
+      },
+    });
 
-      if (existingProject) {
-        console.log(`⏭️  Project ${project.name} already exists, skipping...`);
-        continue;
-      }
-
-      // Create new project with messages
-      const createdProject = await prisma.project.create({
-        data: project,
-      });
-
-      console.log(`✅ Project ${createdProject.name} seeded`);
+    if (existingProject) {
+      console.log(`⏭️  Project ${project.name} already exists, skipping...`);
+      continue;
     }
 
-    console.log("✨ Seed completed successfully!");
-  } catch (error) {
-    console.error("❌ Error seeding database:", error);
-    throw error;
-  } finally {
-    await prisma.$disconnect();
-  }
-}
+    // Create new project with messages
+    const createdProject = await prisma.project.create({
+      data: project,
+    });
 
-main();
+    console.log(`✅ Project ${createdProject.name} seeded`);
+  }
+
+  console.log("✨ Seed completed successfully!");
+} catch (error) {
+  console.error("❌ Error seeding database:", error);
+  throw error;
+} finally {
+  await prisma.$disconnect();
+}
