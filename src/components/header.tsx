@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import { LiquidMetal } from "@paper-design/shaders-react";
 import { dark } from "@clerk/themes";
 import {
   SignedIn,
@@ -21,7 +21,25 @@ const Header = () => {
     <header className="p-4 bg-transparent fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-b border-transparent">
       <div className="max-w-5xl mx-auto w-full flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Frame AI" width={32} height={32} />
+          <LiquidMetal
+            width={32}
+            height={32}
+            className="rounded-full"
+            // image="https://shaders.paper.design/images/logos/diamond.svg"
+            colorBack="#000"
+            colorTint="#ffffff"
+            shape="daisy"
+            repetition={2}
+            softness={0.1}
+            shiftRed={0.3}
+            shiftBlue={0.3}
+            distortion={0.07}
+            contour={0.4}
+            angle={70}
+            speed={1}
+            scale={1}
+            fit="cover"
+          />
           <span className="text-2xl font-bold">Frame AI</span>
         </Link>
         <SignedOut>
