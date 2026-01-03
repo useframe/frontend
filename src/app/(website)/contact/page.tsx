@@ -67,7 +67,7 @@ export default function ContactPage() {
               <div className="absolute -top-1 -right-1 h-3 w-3 animate-pulse rounded-full bg-green-500"></div>
             </div>
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
-              Rapidhyre AI
+              Frame AI
             </span>
           </Link>
 
@@ -96,8 +96,8 @@ export default function ContactPage() {
               </span>
             </h1>
             <p className="mx-auto max-w-3xl text-xl text-gray-600">
-              Ready to transform your hiring process? Our team is here to help you get started with
-              Rapidhyre AI.
+              Ready to build interactive web experiences? Our team is here to help you get started with
+              Frame AI.
             </p>
           </motion.div>
 
@@ -194,7 +194,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     className="mt-2 min-h-[120px]"
-                    placeholder="Tell us about your hiring challenges and how Rapidhyre AI can help..."
+                    placeholder="Tell us about your project ideas and how Frame AI can help..."
                   />
                 </div>
 
@@ -224,7 +224,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="mb-1 font-semibold">Email</h3>
-                      <p className="text-gray-600">hello@rapidhyre.ai</p>
+                      <p className="text-gray-600">hello@useframe.vercel.app</p>
                       <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                     </div>
                   </div>
@@ -246,7 +246,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="mb-1 font-semibold">Office</h3>
-                      <p className="text-gray-600">Rapidhyre AI Labs</p>
+                      <p className="text-gray-600">Frame AI Labs</p>
                       <p className="text-gray-600">123 Innovation Drive</p>
                       <p className="text-gray-600">San Francisco, CA 94105</p>
                     </div>
@@ -255,11 +255,11 @@ export default function ContactPage() {
               </div>
 
               <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-purple-50 p-8">
-                <h3 className="mb-4 text-xl font-bold">Why Choose Rapidhyre AI?</h3>
+                <h3 className="mb-4 text-xl font-bold">Why Choose Frame AI?</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="h-2 w-2 rounded-full bg-blue-500"></div>
-                    <span className="text-gray-700">AI-powered hiring automation</span>
+                    <span className="text-gray-700">AI-powered code assistance</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="h-2 w-2 rounded-full bg-purple-500"></div>

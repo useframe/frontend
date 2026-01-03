@@ -1,859 +1,783 @@
 "use client";
 
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
-  ArrowRight,
-  Bot,
-  Target,
-  Zap,
-  Users,
-  Brain,
-  Shield,
-  TrendingUp,
-  CheckCircle,
-  Star,
-  Play,
-  ChevronRight,
-  Globe,
-  Lock,
-  Award,
-  Sparkles,
-  MessageSquare,
-  FileText,
-  Search,
-  Send,
-  Calendar,
-  BarChart3,
-  Rocket,
-  Lightbulb,
-  Cpu,
-  Database,
-  Cloud,
-  GitBranch,
-  Zap as Lightning,
-} from "lucide-react";
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import Link from "next/link";
 import { motion } from "motion/react";
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const scaleIn = {
-  initial: { opacity: 0, scale: 0.8 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.5 },
-};
+import {
+  Code2,
+  CheckCircle,
+  Github,
+  GitBranch,
+  Terminal,
+  Instagram,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-screen flex-col ">
-      {/* Header */}
-      {/* <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur-md">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <motion.div
-            className="flex items-center space-x-2"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative">
-              <Rocket className="h-8 w-8 text-blue-600" />
-              <div className="absolute -top-1 -right-1 h-3 w-3 animate-pulse rounded-full bg-green-500"></div>
-            </div>
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
-              Rapidhyre AI
-            </span>
-          </motion.div>
-
-          <nav className="hidden items-center space-x-8 md:flex">
-            <Link
-              href="#features"
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
-            >
-              Features
-            </Link>
-            <Link
-              href="#solutions"
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
-            >
-              Solutions
-            </Link>
-            <Link
-              href="#pricing"
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="#about"
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
-            >
-              About
-            </Link>
-          </nav>
-
-          <motion.div
-            className="flex items-center space-x-4"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link href="/sign-in">
-              <Button variant="ghost" className="text-gray-600 hover:text-blue-600">
-                Sign In
-              </Button>
-            </Link>
-            <Link href="/sign-up">
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                Get Started Free
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </header> */}
-
-      {/* Hero Section */}
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <main className="flex-1">
-        <section className="relative overflow-hidden py-20 lg:py-32">
-          <div className="relative z-10 container mx-auto px-4">
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Theme-aware gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted dark:from-black dark:via-[#0A0A0A] dark:to-[#1A1A1A]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.15)_0%,transparent_70%)]"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent dark:from-black/50"></div>
+          </div>
+
+          <div className="relative z-10 container mx-auto px-4 py-32">
             <motion.div
               className="mx-auto max-w-4xl text-center"
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <motion.div
-                className="mb-6 inline-flex items-center space-x-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-              >
-                <Sparkles className="h-4 w-4" />
-                <span>AI-Powered Hiring Platform</span>
-              </motion.div>
-
               <h1 className="mb-6 text-5xl font-bold tracking-tight lg:text-7xl">
-                The AI Toolkit for
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-                  {" "}
-                  Modern Hiring
+                Build Every Line,{" "}
+                <span className="bg-gradient-to-r from-foreground/80 to-purple-600 dark:from-gray-300 dark:to-purple-500 bg-clip-text text-transparent">
+                  Ship Every Day
                 </span>
               </h1>
 
-              <p className="mx-auto mb-8 max-w-3xl text-xl leading-relaxed text-gray-600 lg:text-2xl">
-                Rapidhyre AI combines{" "}
-                <strong>Rapidhyre's candidate automation</strong> and{" "}
-                <strong>Juicebox.ai's recruiter intelligence</strong>
-                to create a dual-sided AI hiring platform that transforms both
-                job hunting and talent acquisition.
+              <p className="mx-auto mb-8 max-w-2xl text-xl text-muted-foreground lg:text-2xl">
+                Take control of your code, stay focused, and achieve more with
+                every line generated.
               </p>
 
               <motion.div
-                className="flex flex-col items-center justify-center gap-4 sm:flex-row"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
               >
                 <Link href="/sign-up">
                   <Button
                     size="lg"
-                    className="h-auto bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-6 text-lg hover:from-blue-700 hover:to-purple-700"
+                    className="h-12 bg-foreground text-background hover:bg-foreground/90 dark:bg-white dark:text-black dark:hover:bg-gray-200 rounded-lg px-8 text-base font-medium"
                   >
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    Start Building Free
                   </Button>
                 </Link>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-auto border-2 px-8 py-6 text-lg"
-                >
-                  <Play className="mr-2 h-5 w-5" />
-                  Watch Demo
-                </Button>
-              </motion.div>
-
-              <motion.div
-                className="mt-12 flex items-center justify-center space-x-8 text-sm text-gray-500"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-              >
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>No credit card required</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>14-day free trial</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>Cancel anytime</span>
-                </div>
               </motion.div>
             </motion.div>
+
+            {/* Code Cards Foreground */}
+            <div className="relative z-10 mt-20 flex justify-center">
+              <div className="flex gap-4">
+                {[
+                  {
+                    gradient:
+                      "from-purple-500/20 to-blue-500/20 dark:from-purple-500/20 dark:to-blue-500/20",
+                    border: "border-purple-500/30 dark:border-purple-500/30",
+                  },
+                  {
+                    gradient:
+                      "from-teal-500/20 to-cyan-500/20 dark:from-teal-500/20 dark:to-cyan-500/20",
+                    border: "border-teal-500/30 dark:border-teal-500/30",
+                  },
+                  {
+                    gradient:
+                      "from-orange-500/20 to-red-500/20 dark:from-orange-500/20 dark:to-red-500/20",
+                    border: "border-orange-500/30 dark:border-orange-500/30",
+                  },
+                  {
+                    gradient:
+                      "from-muted to-muted/50 dark:from-gray-500/20 dark:to-gray-700/20",
+                    border: "border-border dark:border-gray-500/30",
+                  },
+                ].map((card, index) => (
+                  <motion.div
+                    key={index}
+                    className={`w-64 h-40 rounded-xl border-2 ${card.border} bg-gradient-to-br ${card.gradient} backdrop-blur-sm shadow-2xl`}
+                    initial={{ opacity: 0, y: 50, rotate: -5 + index * 2 }}
+                    animate={{ opacity: 1, y: 0, rotate: -5 + index * 2 }}
+                    transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
+                    style={{ transform: `rotate(${-5 + index * 2}deg)` }}
+                  >
+                    <div className="p-4 h-full flex flex-col justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-6 bg-foreground/20 rounded"></div>
+                        <div className="flex-1 h-4 bg-foreground/10 rounded"></div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="h-3 bg-foreground/10 rounded w-3/4"></div>
+                        <div className="h-3 bg-foreground/10 rounded w-1/2"></div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
-
-          {/* Floating Elements */}
-          <motion.div
-            className="absolute top-20 left-10 hidden lg:block"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="rounded-xl border bg-white/80 p-4 shadow-lg backdrop-blur-sm">
-              <div className="flex items-center space-x-3">
-                <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                <span className="text-sm font-medium">AI Agent Active</span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="absolute top-40 right-20 hidden lg:block"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="rounded-xl border bg-white/80 p-4 shadow-lg backdrop-blur-sm">
-              <div className="flex items-center space-x-3">
-                <Brain className="h-5 w-5 text-blue-600" />
-                <span className="text-sm font-medium">Smart Matching</span>
-              </div>
-            </div>
-          </motion.div>
         </section>
 
         {/* Stats Section */}
-        <section className="bg-white py-16">
+        <section className="bg-background py-20">
           <div className="container mx-auto px-4">
             <motion.div
-              className="grid grid-cols-2 gap-8 md:grid-cols-4"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              <motion.div className="text-center" variants={fadeInUp}>
-                <div className="mb-2 text-3xl font-bold text-blue-600 md:text-4xl">
-                  10x
-                </div>
-                <div className="text-gray-600">Faster Hiring</div>
-              </motion.div>
-              <motion.div className="text-center" variants={fadeInUp}>
-                <div className="mb-2 text-3xl font-bold text-purple-600 md:text-4xl">
-                  95%
-                </div>
-                <div className="text-gray-600">Accuracy Rate</div>
-              </motion.div>
-              <motion.div className="text-center" variants={fadeInUp}>
-                <div className="mb-2 text-3xl font-bold text-green-600 md:text-4xl">
-                  50%
-                </div>
-                <div className="text-gray-600">Cost Reduction</div>
-              </motion.div>
-              <motion.div className="text-center" variants={fadeInUp}>
-                <div className="mb-2 text-3xl font-bold text-orange-600 md:text-4xl">
-                  24/7
-                </div>
-                <div className="text-gray-600">AI Availability</div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section
-          id="features"
-          className="bg-gradient-to-br from-slate-50 to-blue-50 py-20"
-        >
-          <div className="container mx-auto px-4">
-            <motion.div
-              className="mb-16 text-center"
+              className="text-center mb-16"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
-                An End-to-End Platform for
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {" "}
-                  AI-Powered Hiring
-                </span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+                Instant Code Generation at Your Fingertips
               </h2>
-              <p className="mx-auto max-w-3xl text-xl text-gray-600">
-                Designed for HR teams, recruiters, and job seekers. Rapidhyre AI
-                provides intelligent automation for every step of the hiring
-                process.
+              <p className="text-muted-foreground text-lg">
+                Say goodbye to delays, hello to instant code
               </p>
             </motion.div>
 
-            <motion.div
-              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              {/* For Candidates */}
-              <motion.div
-                className="rounded-2xl border border-gray-100 bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl"
-                variants={scaleIn}
-                whileHover={{ y: -5 }}
-              >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600">
-                  <Users className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="mb-4 text-2xl font-bold">For Candidates</h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>AI-powered job automation</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Resume optimization & ATS scoring</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Interview coaching & simulation</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Career path prediction</span>
-                  </li>
-                </ul>
-              </motion.div>
-
-              {/* For Recruiters */}
-              <motion.div
-                className="rounded-2xl border border-gray-100 bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl"
-                variants={scaleIn}
-                whileHover={{ y: -5 }}
-              >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-600">
-                  <Brain className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="mb-4 text-2xl font-bold">For Recruiters</h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Natural language candidate search</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>AI candidate ranking & scoring</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Smart email outreach automation</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Autonomous AI agents</span>
-                  </li>
-                </ul>
-              </motion.div>
-
-              {/* Unified AI Engine */}
-              <motion.div
-                className="rounded-2xl border border-gray-100 bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl"
-                variants={scaleIn}
-                whileHover={{ y: -5 }}
-              >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-600">
-                  <Cpu className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="mb-4 text-2xl font-bold">Unified AI Engine</h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Self-optimizing hiring ecosystem</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Shared intelligence across platforms</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Real-time analytics & insights</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
-                    <span>Continuous learning & improvement</span>
-                  </li>
-                </ul>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Solutions Section */}
-        <section id="solutions" className="bg-white py-20">
-          <div className="container mx-auto px-4">
-            <motion.div
-              className="mb-16 text-center"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
-                Designed for Your Industry,
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {" "}
-                  Built for Success
-                </span>
-              </h2>
-              <p className="mx-auto max-w-3xl text-xl text-gray-600">
-                Our powerful AI solutions are tailored to the unique needs and
-                workflows of every industry.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  icon: <Globe className="h-8 w-8" />,
-                  title: "Technology",
-                  description:
-                    "Scale engineering teams with AI-powered technical assessments and culture fit matching.",
-                  features: [
-                    "Technical skill evaluation",
-                    "Culture fit analysis",
-                    "Team compatibility scoring",
-                  ],
+                  label: "Uptime",
+                  value: "99.9%",
+                  desc: "Ensuring reliability.",
                 },
                 {
-                  icon: <TrendingUp className="h-8 w-8" />,
-                  title: "Finance",
-                  description:
-                    "Find top financial talent with compliance-focused screening and risk assessment.",
-                  features: [
-                    "Compliance verification",
-                    "Risk assessment",
-                    "Regulatory knowledge testing",
-                  ],
+                  label: "Projects",
+                  value: "50K+",
+                  desc: "Trusted by developers.",
                 },
                 {
-                  icon: <Shield className="h-8 w-8" />,
-                  title: "Healthcare",
-                  description:
-                    "Recruit healthcare professionals with specialized credential verification and patient care focus.",
-                  features: [
-                    "Credential verification",
-                    "Patient care simulation",
-                    "Medical knowledge assessment",
-                  ],
+                  label: "Generation Time",
+                  value: "0.3s",
+                  desc: "Lightning-fast results.",
                 },
                 {
-                  icon: <Lightbulb className="h-8 w-8" />,
-                  title: "Education",
-                  description:
-                    "Build exceptional educational teams with teaching methodology and student engagement evaluation.",
-                  features: [
-                    "Teaching methodology",
-                    "Student engagement",
-                    "Curriculum alignment",
-                  ],
+                  label: "Faster",
+                  value: "10x",
+                  desc: "Redefining productivity.",
                 },
-                {
-                  icon: <Database className="h-8 w-8" />,
-                  title: "Government",
-                  description:
-                    "Navigate complex hiring requirements with security clearance and policy compliance automation.",
-                  features: [
-                    "Security clearance",
-                    "Policy compliance",
-                    "Public service orientation",
-                  ],
-                },
-                {
-                  icon: <Cloud className="h-8 w-8" />,
-                  title: "Startups",
-                  description:
-                    "Scale rapidly with flexible hiring solutions that grow with your company.",
-                  features: [
-                    "Rapid scaling",
-                    "Flexible solutions",
-                    "Growth alignment",
-                  ],
-                },
-              ].map((solution, index) => (
+              ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="rounded-2xl border border-gray-200 bg-gradient-to-br from-slate-50 to-blue-50 p-8 transition-all duration-300 hover:border-blue-300"
-                  variants={scaleIn}
-                  whileHover={{ y: -5, scale: 1.02 }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
                 >
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-white shadow-sm">
-                    <div className="text-blue-600">{solution.icon}</div>
+                  <div className="text-muted-foreground text-sm mb-2">
+                    {stat.label}
                   </div>
-                  <h3 className="mb-4 text-2xl font-bold">{solution.title}</h3>
-                  <p className="mb-6 text-gray-600">{solution.description}</p>
-                  <ul className="space-y-2">
-                    {solution.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="flex items-center space-x-2 text-sm text-gray-600"
-                      >
-                        <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="text-6xl font-bold mb-2">{stat.value}</div>
+                  <div className="text-muted-foreground text-sm">
+                    {stat.desc}
+                  </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* How It Works Section */}
-        <section className="bg-gradient-to-br from-blue-50 to-purple-50 py-20">
+        {/* Dashboard Visualization Section */}
+        <section className="bg-background py-20">
           <div className="container mx-auto px-4">
-            <motion.div
-              className="mb-16 text-center"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
-                How Rapidhyre AI
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {" "}
-                  Works
-                </span>
-              </h2>
-              <p className="mx-auto max-w-3xl text-xl text-gray-600">
-                Our intelligent platform streamlines the entire hiring process
-                with AI-powered automation.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-1 gap-8 lg:grid-cols-4"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              {[
-                {
-                  step: "01",
-                  title: "Upload & Analyze",
-                  description:
-                    "Upload resumes or job descriptions. Our AI analyzes content and extracts key insights.",
-                  icon: <FileText className="h-8 w-8" />,
-                },
-                {
-                  step: "02",
-                  title: "AI Matching",
-                  description:
-                    "Advanced algorithms match candidates to positions based on skills, experience, and culture fit.",
-                  icon: <Search className="h-8 w-8" />,
-                },
-                {
-                  step: "03",
-                  title: "Smart Communication",
-                  description:
-                    "Automated outreach with personalized messaging and intelligent follow-up scheduling.",
-                  icon: <MessageSquare className="h-8 w-8" />,
-                },
-                {
-                  step: "04",
-                  title: "Track & Optimize",
-                  description:
-                    "Real-time analytics and continuous optimization for better hiring outcomes.",
-                  icon: <BarChart3 className="h-8 w-8" />,
-                },
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  className="relative"
-                  variants={fadeInUp}
-                >
-                  <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-lg">
-                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 text-xl font-bold text-white">
-                      {step.step}
-                    </div>
-                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-blue-50">
-                      <div className="text-blue-600">{step.icon}</div>
-                    </div>
-                    <h3 className="mb-4 text-xl font-bold">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
-                  </div>
-                  {index < 3 && (
-                    <div className="absolute top-1/2 -right-4 hidden -translate-y-1/2 transform lg:block">
-                      <ChevronRight className="h-8 w-8 text-gray-300" />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="bg-white py-20">
-          <div className="container mx-auto px-4">
-            <motion.div
-              className="mb-16 text-center"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
-                Loved by Teams
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {" "}
-                  Worldwide
-                </span>
-              </h2>
-              <p className="mx-auto max-w-3xl text-xl text-gray-600">
-                See how Rapidhyre AI is transforming hiring for companies of all
-                sizes.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              {[
-                {
-                  quote:
-                    "Rapidhyre AI helped us reduce our time-to-hire by 70% while improving candidate quality. The AI agents are incredibly intelligent.",
-                  author: "Sarah Chen",
-                  role: "Head of Talent Acquisition",
-                  company: "TechFlow Inc.",
-                  rating: 5,
-                },
-                {
-                  quote:
-                    "The natural language search is a game-changer. We can find perfect candidates in seconds, not hours.",
-                  author: "Michael Rodriguez",
-                  role: "VP of Engineering",
-                  company: "ScaleUp Solutions",
-                  rating: 5,
-                },
-                {
-                  quote:
-                    "Rapidhyre AI's resume optimization helped me land my dream job. The AI coaching was incredibly helpful.",
-                  author: "Emily Johnson",
-                  role: "Software Engineer",
-                  company: "Fortune 500",
-                  rating: 5,
-                },
-              ].map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  className="rounded-2xl border border-gray-200 bg-gradient-to-br from-slate-50 to-blue-50 p-8"
-                  variants={scaleIn}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="mb-4 flex">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-5 w-5 fill-current text-yellow-400"
-                      />
-                    ))}
-                  </div>
-                  <blockquote className="mb-6 text-gray-700 italic">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <div className="flex items-center space-x-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 font-bold text-white">
-                      {testimonial.author
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left: Dashboard Visualization */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="bg-card rounded-xl border border-border p-6 shadow-2xl">
+                  <div className="flex justify-between items-start mb-6">
                     <div>
-                      <div className="font-semibold">{testimonial.author}</div>
-                      <div className="text-sm text-gray-600">
-                        {testimonial.role}
+                      <div className="text-muted-foreground text-sm mb-1">
+                        Projects
                       </div>
-                      <div className="text-sm text-gray-500">
-                        {testimonial.company}
-                      </div>
+                      <div className="text-3xl font-bold">127</div>
                     </div>
+                    <div className="w-24 h-8 bg-muted rounded-full"></div>
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
 
-        {/* Features Showcase */}
-        {/* <FeaturesShowcase /> */}
+                  {/* Bar Chart */}
+                  <div className="space-y-2">
+                    {[60, 45, 80, 35, 70, 50, 90, 40].map((height, index) => (
+                      <div key={index} className="flex items-end gap-1">
+                        <div
+                          className={`flex-1 rounded ${
+                            index === 2 ? "bg-foreground" : "bg-muted"
+                          }`}
+                          style={{ height: `${height}px` }}
+                        ></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
 
-        {/* Pricing Section */}
-        {/* <PricingSection /> */}
-
-        {/* CTA Section */}
-        <section className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 py-20">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="mb-6 text-4xl font-bold text-white lg:text-5xl">
-                Ready to Transform Your Hiring?
-              </h2>
-              <p className="mx-auto mb-8 max-w-3xl text-xl text-blue-100">
-                Join thousands of companies using Rapidhyre AI to hire faster,
-                smarter, and more efficiently.
-              </p>
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              {/* Right: Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  Your Code, Your Status
+                  <br />
+                  —Live Updates Anytime
+                </h2>
+                <p className="text-muted-foreground text-lg mb-8">
+                  Monitor your code generation progress in real time and take
+                  immediate action when needed to stay fully productive.
+                </p>
                 <Link href="/sign-up">
-                  <Button
-                    size="lg"
-                    className="h-auto bg-white px-8 py-6 text-lg text-blue-600 hover:bg-gray-100"
-                  >
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                  <Button className="h-12 bg-card text-foreground hover:bg-card/80 border border-border rounded-lg px-8">
+                    Start Building Free
                   </Button>
                 </Link>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-auto border-white px-8 py-6 text-lg text-white hover:bg-white hover:text-blue-600"
-                >
-                  <Play className="mr-2 h-5 w-5" />
-                  Watch Demo
-                </Button>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Feature Section */}
+        <section className="bg-background py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left: Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  Generate Code Without
+                  <br />
+                  the Back-and-Forth
+                </h2>
+                <p className="text-muted-foreground text-lg mb-8">
+                  Simplify code generation by letting AI handle the heavy
+                  lifting. Say goodbye to endless debugging.
+                </p>
+
+                <ul className="space-y-4 mb-8">
+                  {[
+                    "Smart code generation",
+                    "Multi-language support",
+                    "Automated testing",
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-foreground shrink-0" />
+                      <span className="text-lg">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link href="/sign-up">
+                  <Button className="h-12 bg-card text-foreground hover:bg-card/80 border border-border rounded-lg px-8">
+                    Start Building Free
+                  </Button>
+                </Link>
+              </motion.div>
+
+              {/* Right: Dashboard Visualization */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="bg-card rounded-xl border border-border p-6 shadow-2xl">
+                  {/* Header Bar */}
+                  <div className="flex items-center justify-between mb-4 pb-4 border-b border-border">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded bg-gradient-to-br from-purple-500 to-blue-500"></div>
+                      <span className="font-semibold">Frame AI</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="w-32 h-8 bg-muted rounded"></div>
+                      <div className="w-8 h-8 bg-muted rounded"></div>
+                    </div>
+                  </div>
+
+                  {/* Sidebar and Content */}
+                  <div className="flex gap-4">
+                    <div className="w-20 bg-muted rounded-lg p-3 space-y-3">
+                      <div className="h-8 bg-muted-foreground/20 rounded"></div>
+                      <div className="h-8 bg-foreground rounded"></div>
+                      <div className="h-8 bg-muted-foreground/20 rounded"></div>
+                    </div>
+
+                    <div className="flex-1 space-y-4">
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-muted rounded-lg p-4">
+                          <div className="text-muted-foreground text-xs mb-1">
+                            Main Project
+                          </div>
+                          <div className="text-xl font-bold">42 files</div>
+                        </div>
+                        <div className="bg-muted rounded-lg p-4">
+                          <div className="text-muted-foreground text-xs mb-1">
+                            Lines of Code
+                          </div>
+                          <div className="text-xl font-bold">12.4K</div>
+                        </div>
+                      </div>
+
+                      <div className="bg-muted rounded-lg p-4">
+                        <div className="text-muted-foreground text-xs mb-2">
+                          Code Generation Stats
+                        </div>
+                        <div className="h-32 bg-background rounded">
+                          {/* Simple line graph representation */}
+                          <svg className="w-full h-full" viewBox="0 0 200 100">
+                            <polyline
+                              points="0,80 30,70 60,50 90,40 120,30 150,25 180,20 200,15"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              className="text-foreground"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Integration Section */}
+        <section className="bg-muted/30 dark:bg-[#121212] py-20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Works Everywhere
+                <br />
+                Across All Platforms
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Frame AI works everywhere—effortless integration for development
+              </p>
+            </motion.div>
+
+            {/* Central Graphic */}
+            <div className="flex justify-center items-center relative h-96">
+              {/* Central Layered Cubes */}
+              <div className="relative z-10">
+                {[0, 1, 2].map((layer) => (
+                  <div
+                    key={layer}
+                    className="absolute w-32 h-32 border-2 border-foreground/30 rounded-lg"
+                    style={{
+                      transform: `translate(${layer * 8}px, ${
+                        layer * 8
+                      }px) rotate(${layer * 5}deg)`,
+                      opacity: 1 - layer * 0.3,
+                    }}
+                  ></div>
+                ))}
               </div>
+
+              {/* Encircling Ring */}
+              <div className="absolute w-80 h-80 border border-foreground/20 rounded-full"></div>
+
+              {/* Connecting Lines */}
+              <div className="absolute w-80 h-80">
+                <div className="absolute top-1/2 left-0 w-full h-px bg-foreground/20"></div>
+                <div className="absolute top-0 left-1/2 w-px h-full bg-foreground/20"></div>
+              </div>
+
+              {/* Platform Icons */}
+              {[
+                { icon: Github, position: "top-0 left-1/2 -translate-x-1/2" },
+                {
+                  icon: GitBranch,
+                  position: "bottom-0 left-1/2 -translate-x-1/2",
+                },
+                { icon: Terminal, position: "left-0 top-1/2 -translate-y-1/2" },
+                { icon: Code2, position: "right-0 top-1/2 -translate-y-1/2" },
+              ].map(({ icon: Icon, position }, index) => (
+                <div
+                  key={index}
+                  className={`absolute ${position} w-16 h-16 border border-foreground/30 rounded-full flex items-center justify-center bg-card backdrop-blur-sm`}
+                >
+                  <Icon className="w-8 h-8" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="bg-background py-20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Trusted by Developers,
+                <br />
+                Loved by Teams
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Developers trust us. Teams rave about us
+              </p>
+            </motion.div>
+
+            <div className="flex justify-center">
+              <div className="relative w-full max-w-2xl">
+                {/* Background Cards */}
+                <motion.div
+                  className="absolute inset-0 bg-muted rounded-xl border border-border opacity-50"
+                  style={{
+                    transform: "rotate(-3deg) translateX(-20px)",
+                  }}
+                ></motion.div>
+                <motion.div
+                  className="absolute inset-0 bg-muted rounded-xl border border-border opacity-50"
+                  style={{
+                    transform: "rotate(3deg) translateX(20px)",
+                  }}
+                ></motion.div>
+
+                {/* Main Card */}
+                <motion.div
+                  className="relative bg-card rounded-xl border border-border p-8 md:p-12"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <blockquote className="text-2xl md:text-3xl font-bold mb-6">
+                    Frame AI has completely transformed the way we generate code
+                    and build projects
+                  </blockquote>
+                  <p className="text-muted-foreground text-lg mb-8">
+                    With its seamless code generation and real-time
+                    collaboration, we&apos;ve seen a significant improvement in
+                    both productivity and code quality.
+                  </p>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold">
+                      SJ
+                    </div>
+                    <div>
+                      <div className="font-semibold text-lg">Sarah Julian</div>
+                      <div className="text-muted-foreground">
+                        Lead Developer
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Carousel Navigation */}
+            <div className="flex justify-center gap-2 mt-8">
+              <div className="w-12 h-2 bg-foreground rounded-full"></div>
+              <div className="w-12 h-2 bg-muted border border-border rounded-full"></div>
+              <div className="w-12 h-2 bg-muted border border-border rounded-full"></div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="bg-background py-20">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Frequently Asked
+                <br />
+                Questions
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Have another question? Please contact our team!
+              </p>
+            </motion.div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem
+                value="item-1"
+                className="bg-card rounded-xl border border-border px-6"
+              >
+                <AccordionTrigger className="text-xl font-bold hover:no-underline py-6">
+                  What is Frame AI?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base pb-6">
+                  Frame AI is an advanced code generation platform that helps
+                  developers build, iterate, and deploy interactive web projects
+                  with AI-powered assistance in real time.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-2"
+                className="bg-card rounded-xl border border-border px-6"
+              >
+                <AccordionTrigger className="text-xl font-bold hover:no-underline py-6">
+                  How does Frame AI generate code?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base pb-6">
+                  Frame AI uses advanced AI models to understand your
+                  requirements and generate production-ready code across
+                  multiple programming languages and frameworks.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-3"
+                className="bg-card rounded-xl border border-border px-6"
+              >
+                <AccordionTrigger className="text-xl font-bold hover:no-underline py-6">
+                  Is Frame AI suitable for small teams?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base pb-6">
+                  Yes! Frame AI is designed to scale with teams of all sizes,
+                  from individual developers to large organizations.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-4"
+                className="bg-card rounded-xl border border-border px-6"
+              >
+                <AccordionTrigger className="text-xl font-bold hover:no-underline py-6">
+                  What programming languages does Frame AI support?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base pb-6">
+                  Frame AI supports all major programming languages including
+                  JavaScript, TypeScript, Python, React, Next.js, and many more
+                  frameworks and libraries.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-5"
+                className="bg-card rounded-xl border border-border px-6"
+              >
+                <AccordionTrigger className="text-xl font-bold hover:no-underline py-6">
+                  Can Frame AI integrate with my existing development workflow?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base pb-6">
+                  Absolutely! Frame AI integrates seamlessly with popular
+                  development tools, version control systems, and deployment
+                  platforms.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
+
+        {/* Banner Container */}
+        <section className="bg-background py-20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              className="bg-card rounded-xl border border-border p-12 md:p-16 text-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Build Smarter with the
+                <br />
+                Platform Built for Developers
+              </h2>
+              <p className="text-muted-foreground text-lg md:text-xl mb-8">
+                Generate code, automate workflows, and ship faster with ease
+              </p>
+              <Link href="/sign-up">
+                <Button className="h-12 bg-foreground text-background hover:bg-foreground/90 dark:bg-white dark:text-black dark:hover:bg-gray-200 rounded-lg px-8 text-base font-medium">
+                  Get Started Now
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-16 text-white">
+      <footer className="bg-background border-t border-border py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-            <div>
-              <div className="mb-4 flex items-center space-x-2">
-                <Rocket className="h-8 w-8 text-blue-400" />
-                <span className="text-2xl font-bold">Rapidhyre AI</span>
-              </div>
-              <p className="mb-4 text-gray-400">
-                The AI toolkit for modern hiring. Transform your recruitment
-                process with intelligent automation.
-              </p>
-              <div className="flex space-x-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-800 transition-colors hover:bg-gray-700">
-                  <Globe className="h-5 w-5" />
-                </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-800 transition-colors hover:bg-gray-700">
-                  <MessageSquare className="h-5 w-5" />
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
+            {/* Logo Column */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded"></div>
+                <span className="text-2xl font-bold">Frame AI</span>
               </div>
             </div>
 
+            {/* Navigation Columns */}
             <div>
-              <h3 className="mb-4 font-semibold">Product</h3>
-              <ul className="space-y-2 text-gray-400">
+              <h3 className="font-semibold mb-4">Company</h3>
+              <ul className="space-y-2 text-muted-foreground text-sm">
                 <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    Features
+                  <Link
+                    href="/about"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Our Mission
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    Pricing
+                  <Link
+                    href="/about"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Our Vision
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    API
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    Integrations
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="mb-4 font-semibold">Company</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    Careers
+                  <Link
+                    href="/about"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Our Story
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/contact"
-                    className="transition-colors hover:text-white"
+                    className="hover:text-foreground transition-colors"
                   >
-                    Contact
+                    Meet Our Team
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="mb-4 font-semibold">Support</h3>
-              <ul className="space-y-2 text-gray-400">
+              <h3 className="font-semibold mb-4">Our Services</h3>
+              <ul className="space-y-2 text-muted-foreground text-sm">
                 <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    Help Center
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Code Generation
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="transition-colors hover:text-white">
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    AI Assistance
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Project Templates
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Collaboration Tools
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2 text-muted-foreground text-sm">
+                <li>
+                  <Link
+                    href="/blog"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Documentation
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="transition-colors hover:text-white">
-                    Status
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    API Reference
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="transition-colors hover:text-white">
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Guides
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Privacy</h3>
+              <ul className="space-y-2 text-muted-foreground text-sm">
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/term-of-service"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Data Protection
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Security
                   </Link>
                 </li>
@@ -861,30 +785,31 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-center justify-between border-t border-gray-800 pt-8 md:flex-row">
-            <p className="text-sm text-gray-400">
-              © 2024 Rapidhyre AI Labs. All rights reserved.
-            </p>
-            <div className="mt-4 flex space-x-6 md:mt-0">
+          {/* Bottom Bar */}
+          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
+            <div className="flex gap-4">
               <Link
                 href="#"
-                className="text-sm text-gray-400 transition-colors hover:text-white"
+                className="w-10 h-10 flex items-center justify-center border border-border rounded-lg hover:bg-muted transition-colors"
               >
-                Privacy
+                <Instagram className="w-5 h-5" />
               </Link>
               <Link
                 href="#"
-                className="text-sm text-gray-400 transition-colors hover:text-white"
+                className="w-10 h-10 flex items-center justify-center border border-border rounded-lg hover:bg-muted transition-colors"
               >
-                Terms
+                <Twitter className="w-5 h-5" />
               </Link>
               <Link
                 href="#"
-                className="text-sm text-gray-400 transition-colors hover:text-white"
+                className="w-10 h-10 flex items-center justify-center border border-border rounded-lg hover:bg-muted transition-colors"
               >
-                Cookies
+                <Youtube className="w-5 h-5" />
               </Link>
             </div>
+            <p className="text-muted-foreground text-sm">
+              © Copyright Frame AI 2025
+            </p>
           </div>
         </div>
       </footer>
