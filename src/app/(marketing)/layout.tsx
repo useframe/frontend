@@ -156,8 +156,8 @@ export const metadata: Metadata = {
     title: "Frame AI - Build Interactive Web Experiences",
     description:
       "Frame AI is a powerful platform for creating, building, and sharing interactive web experiences and code-based frames with AI-powered assistance. Build, iterate, and deploy interactive projects with ease.",
-    emails: ["support@useframe.vercel.app"],
-    phoneNumbers: ["+1-800-123-4567"],
+    // emails: ["support@useframe.vercel.app"],
+    // phoneNumbers: ["+1-800-123-4567"],
     videos: [
       {
         url: "https://useframe.vercel.app/assets/frame-ai-demo.mp4",

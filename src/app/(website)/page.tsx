@@ -759,7 +759,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="/term-of-service"
+                    href="/terms-of-service"
                     className="hover:text-foreground transition-colors"
                   >
                     Terms of Service
